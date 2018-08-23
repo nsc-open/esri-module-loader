@@ -1,6 +1,6 @@
 # esri-module-loader
 
-This package is based on esri-loader.
+This package is based on [esri-loader](https://github.com/Esri/esri-loader).
 
 # install
 
