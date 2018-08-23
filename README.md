@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/esri-module-loader.svg)]
+
 # esri-module-loader
 
 This package is based on [esri-loader](https://github.com/Esri/esri-loader).
