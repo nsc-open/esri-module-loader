@@ -1,6 +1,10 @@
+![npm](https://img.shields.io/npm/v/esri-module-loader.svg)
+![npm](https://img.shields.io/npm/dw/esri-module-loader.svg)
+![GitHub stars](https://img.shields.io/github/stars/nsc-open/esri-module-loader.svg?style=social&label=Stars)
+
 # esri-module-loader
 
-This package is based on esri-loader.
+This package is based on [esri-loader](https://github.com/Esri/esri-loader).
 
 # install
 
