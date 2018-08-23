@@ -1,0 +1,34 @@
+{
+  "name": "esri-module-loader",
+  "version": "0.0.2",
+  "description": "",
+  "main": "es5/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-es5": "babel src --out-dir es5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsc-open/esri-module-loader.git"
+  },
+  "keywords": [
+    "esri-loader",
+    "module-loader"
+  ],
+  "author": "ygjack414@hotmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nsc-open/esri-module-loader/issues"
+  },
+  "homepage": "https://github.com/nsc-open/esri-module-loader#readme",
+  "dependencies": {
+    "esri-loader": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1"
+  }
+}
