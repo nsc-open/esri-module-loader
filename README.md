@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/esri-module-loader.svg)]
+[npm](https://img.shields.io/npm/v/esri-module-loader.svg)
 
 # esri-module-loader
 
