@@ -53,10 +53,11 @@ const normalizeModule = module => {
  * @return {Promise}
  */
 export const loadModules = (modules, options) => {
+  const normalizedModules = modules.map(normalizeModule)
   return esriLoader.loadModules(
-    modules.map(normalizeModule).map(m => m.path),
+    normalizedModules.map(m => m.path),
     options
   ).then(
-    loadedModules => getModulesMapping(modules, loadedModules)
+    loadedModules => getModulesMapping(normalizedModules, loadedModules)
   )
 }

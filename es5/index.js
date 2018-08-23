@@ -69,9 +69,10 @@ var normalizeModule = function normalizeModule(module) {
  * @return {Promise}
  */
 var loadModules = exports.loadModules = function loadModules(modules, options) {
-  return _esriLoader2.default.loadModules(modules.map(normalizeModule).map(function (m) {
+  var normalizedModules = modules.map(normalizeModule);
+  return _esriLoader2.default.loadModules(normalizedModules.map(function (m) {
     return m.path;
   }), options).then(function (loadedModules) {
-    return getModulesMapping(modules, loadedModules);
+    return getModulesMapping(normalizedModules, loadedModules);
   });
 };
