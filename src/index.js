@@ -1,4 +1,5 @@
 import esriLoader from 'esri-loader'
+import * as shortcut from './shortcut'
 
 /**
  * @param  {Array}  [modules=[]]       [{ name, path }]
@@ -21,9 +22,14 @@ const getModulesMapping = (modules = [], loadedModules = []) => {
  */
 const normalizeModule = module => {
   if (typeof module === 'string') {
-    return {
-      name: module.substring(module.lastIndexOf('/') + 1),
-      path: module
+    const path = shortcut.get(module)
+    if (path) {
+      return { name: module, path }
+    } else {
+      return {
+        name: module.substring(module.lastIndexOf('/') + 1),
+        path: module
+      }
     }
   } else if (typeof module === 'object') {
     return module
@@ -61,3 +67,10 @@ export const loadModules = (modules, options) => {
     loadedModules => getModulesMapping(normalizedModules, loadedModules)
   )
 }
+
+
+// shortcut methods
+export const addShortcut = shortcut.add
+export const removeShortcut = shortcut.remove
+export const getShortcut = shortcut.get
+export const resetShortcut = shortcut.reset

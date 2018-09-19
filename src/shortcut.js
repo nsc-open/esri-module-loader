@@ -1,4 +1,4 @@
-const SHORTCUTS = {
+const ESRI_SHORTCUTS = {
   // esri
   Basemaps: 'esri/basemaps',
   Color: 'esri/Color',
@@ -142,14 +142,69 @@ const SHORTCUTS = {
 
 }
 
-export const add = () => {
+let SHORTCUTS = { ...ESRI_SHORTCUTS }
 
+/**
+ * add(name, path)
+ * add({ name, path })
+ * add([{ name, path }, ...])
+ */
+export const add = (...arguments) => {
+  const _add = (name, path) => {
+    if (SHORTCUTS[name]) {
+      console.warn(`shortcut[${name}] with path ${SHORTCUTS[name]} will be overrided with path ${path}`)
+    }
+    return SHORTCUTS[name] = { [name]: path }
+  }
+
+  if (arguments.length === 2) {
+    const [name, path] = arguments
+    return _add(name, path)
+  } else if (typeof arguments[0] === 'object') {
+    return _add(arguments[0].name, arguments[0].path)
+  } else if (Array.isArray(arguments[0])) {
+    arguments[0].forEach(arg => _add(arg.name, arg.path))
+  }
 }
 
-export const remove = () => {
-
+/**
+ * remove('Map')
+ * remove('Map', 'Graphic')
+ * remove(['Map', 'Graphic'])
+ */
+export const remove = (...arguments) => {
+  if (arguments.length > 1) {
+    arguments.forEach(name => delete SHORTCUTS[name])
+  } else if (arguments.length === 1 && Array.isArray(arguments[0])) {
+    arguments[0].forEach(name => delete SHORTCUTS[name])
+  } else if (arguments.length === 1 && typeof arguments[0] === 'string') {
+    delete SHORTCUTS[arguments[0]]
+  }
 }
 
-export const reset = () => {
 
+/**
+ * get() => return all shortcuts mapping
+ * get('Map') => return path
+ * get('Map', 'Graphic') => return shortcuts mapping
+ * get(['Map', 'Graphic']) => return shortcuts mapping
+ */
+export const get = (...arguments) => {
+  if (arguments.length === 0) {
+    return SHORTCUTS
+  } else if (arguments.length === 1) {
+    if (Array.isArray(arguments[0])) {
+      const result = {}
+      arguments[0].forEach(name => result[name] = SHORTCUTS[name])
+      return result
+    } else if (typeof arguments[0] === 'string') {
+      return SHORTCUTS[arguments[0]]
+    }
+  } else {
+    const result = {}
+    arguments.forEach(name => result[name] = SHORTCUTS[name])
+    return result
+  }
 }
+
+export const reset = () => SHORTCUTS = { ...ESRI_SHORTCUTS }
