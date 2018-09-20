@@ -11,9 +11,9 @@ var _esriLoader = require('esri-loader');
 
 var _esriLoader2 = _interopRequireDefault(_esriLoader);
 
-var _shortcut = require('./shortcut');
+var _shortcuts = require('./shortcuts');
 
-var shortcut = _interopRequireWildcard(_shortcut);
+var shortcuts = _interopRequireWildcard(_shortcuts);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -43,7 +43,7 @@ var getModulesMapping = function getModulesMapping() {
  */
 var normalizeModule = function normalizeModule(module) {
   if (typeof module === 'string') {
-    var path = shortcut.get(module);
+    var path = shortcuts.get(module);
     if (path) {
       return { name: module, path: path };
     } else {

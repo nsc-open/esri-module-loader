@@ -1,7 +1,7 @@
 import { loadModules } from './load-modules'
-import * as shortcut from './shortcut'
+import * as shortcuts from './shortcuts'
 
 export default {
   loadModules,
-  shortcut
+  shortcuts
 }

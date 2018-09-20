@@ -10,7 +10,7 @@ let SHORTCUTS = { ...ESRI_SHORTCUTS }
 export const add = (...args) => {
   const _add = (name, path) => {
     if (SHORTCUTS[name]) {
-      console.warn(`shortcut[${name}] with path ${SHORTCUTS[name]} will be overrided with path ${path}`)
+      console.warn(`shortcuts[${name}] with path ${SHORTCUTS[name]} will be overrided with path ${path}`)
     }
     return SHORTCUTS[name] = path
   }

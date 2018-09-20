@@ -21,9 +21,9 @@ const { loadModules } = EsriModuleLoader
 
 A module value can be:
 
-1. path string like `'esri/map'`
-2. shortcut name like `'Map'`
-3. name path object like `{ name: 'Map', path: 'esri/map' }`
+1. a full module value is an object like `{ name: 'Map', path: 'esri/map' }`
+2. or it can be a path string like `'your/path/to/module'`, which will be converted into `{ name: 'module', path: 'your/path/to/module' }`
+3. and it also can be a module name defined in shortcuts, like `'Map'`
 
 
 # load single module
@@ -38,8 +38,8 @@ To load multiple modules, you need an array of module values, like:
 
 ```js
 const modules = [
-  'esri/Map', // use last word as the module name
-  'Color', // by defined shortcut name
+  'esri/Color', // use last word as the module name
+  'Map', // by defined shortcut name
   { name: 'Graphic', path: 'esri/graphic' } // or you can specify your module name
 ]
 
@@ -49,7 +49,9 @@ loadModules(modules).then(({ Graphic, Map, Color }) => {
 })
 ```
 
-# Using third party modules needs extra dojo config:
+# third party modules
+
+needs extra dojo config:
 
 ```js
 loadModules(
@@ -58,17 +60,17 @@ loadModules(
 ).then(({ MyModule }) => {})
 ```
 
-# shortcut
+# shortcuts
 
-You can add your shortcut:
+You can add your own shortcuts:
 
 ```js
 import EsriModuleLoader from 'esri-module-loader'
-const { loadModules, shortcut } = EsriModuleLoader
+const { loadModules, shortcuts } = EsriModuleLoader
 
-shortcut.add('Map', 'esri/map')
-shortcut.add({ name: 'Map', path: 'esri/map' })
-shortcut.add([{ name: 'Map', path: 'esri/map' }, { name: 'Color', path: 'esri/Color' }])
+shortcuts.add('Map', 'esri/map')
+shortcuts.add({ name: 'Map', path: 'esri/map' })
+shortcuts.add([{ name: 'Map', path: 'esri/map' }, { name: 'Color', path: 'esri/Color' }])
 
 loadModules(['Map', 'Color']).then(({ Map, Color}) => {
   // ...
