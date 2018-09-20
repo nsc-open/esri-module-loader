@@ -21,8 +21,8 @@ const { loadModules } = EsriModuleLoader
 
 A module value can be:
 
-1. path string like `esri/map`
-2. shortcut name like `Map`
+1. path string like `'esri/map'`
+2. shortcut name like `'Map'`
 3. name path object like `{ name: 'Map', path: 'esri/map' }`
 
 
