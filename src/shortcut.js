@@ -154,17 +154,17 @@ export const add = (...arguments) => {
     if (SHORTCUTS[name]) {
       console.warn(`shortcut[${name}] with path ${SHORTCUTS[name]} will be overrided with path ${path}`)
     }
-    return SHORTCUTS[name] = { [name]: path }
+    return SHORTCUTS[name] = path
   }
 
   if (arguments.length === 2) {
     const [name, path] = arguments
     return _add(name, path)
-  } else if (typeof arguments[0] === 'object') {
-    return _add(arguments[0].name, arguments[0].path)
   } else if (Array.isArray(arguments[0])) {
     arguments[0].forEach(arg => _add(arg.name, arg.path))
-  }
+  } else if (typeof arguments[0] === 'object') {
+    return _add(arguments[0].name, arguments[0].path)
+  } 
 }
 
 /**
