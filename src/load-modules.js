@@ -1,4 +1,5 @@
 import esriLoader from 'esri-loader'
+import { getConfig } from './config'
 import * as shortcuts from './shortcuts'
 
 /**
@@ -67,7 +68,7 @@ export const loadModules = (modules, options) => {
   const normalizedModules = (singleModule ? [modules] : modules).map(normalizeModule)
   return esriLoader.loadModules(
     normalizedModules.map(m => m.path),
-    options
+    options || getConfig().defaultOptions
   ).then(loadedModules => {
     if (singleModule) {
       return loadedModules[0]
