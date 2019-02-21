@@ -3,9 +3,8 @@ import { loadModules } from './load-modules'
 import { config } from './config'
 import * as shortcuts from './shortcuts'
 
-export default {
+export {
   config,
-  load: loadModules,
   loadModules,
   shortcuts,
   esriLoader

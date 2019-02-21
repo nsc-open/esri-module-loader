@@ -11,6 +11,8 @@ var _esriLoader = require('esri-loader');
 
 var _esriLoader2 = _interopRequireDefault(_esriLoader);
 
+var _config = require('./config');
+
 var _shortcuts = require('./shortcuts');
 
 var shortcuts = _interopRequireWildcard(_shortcuts);
@@ -88,7 +90,7 @@ var loadModules = exports.loadModules = function loadModules(modules, options) {
   var normalizedModules = (singleModule ? [modules] : modules).map(normalizeModule);
   return _esriLoader2.default.loadModules(normalizedModules.map(function (m) {
     return m.path;
-  }), options).then(function (loadedModules) {
+  }), options || (0, _config.getConfig)()).then(function (loadedModules) {
     if (singleModule) {
       return loadedModules[0];
     } else {

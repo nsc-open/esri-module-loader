@@ -68,7 +68,7 @@ export const loadModules = (modules, options) => {
   const normalizedModules = (singleModule ? [modules] : modules).map(normalizeModule)
   return esriLoader.loadModules(
     normalizedModules.map(m => m.path),
-    options || getConfig().defaultOptions
+    options || getConfig()
   ).then(loadedModules => {
     if (singleModule) {
       return loadedModules[0]

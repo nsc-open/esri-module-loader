@@ -13,8 +13,7 @@ npm i -S esri-module-loader
 ```
 
 ```js
-import EsriModuleLoader from 'esri-module-loader'
-const { loadModules } = EsriModuleLoader
+import { loadModules } from 'esri-module-loader'
 ```
 
 # module value
@@ -65,8 +64,7 @@ loadModules(
 You can add your own shortcuts:
 
 ```js
-import EsriModuleLoader from 'esri-module-loader'
-const { loadModules, shortcuts } = EsriModuleLoader
+import { loadModules, shortcuts } from 'esri-module-loader'
 
 shortcuts.add('Map', 'esri/map')
 shortcuts.add({ name: 'Map', path: 'esri/map' })
@@ -78,3 +76,23 @@ loadModules(['Map', 'Color']).then(({ Map, Color}) => {
 ```
 
 Most of esri official modules have been already added into the shortcuts. You can check the [module list](https://github.com/nsc-open/esri-module-loader/blob/master/src/esri-modules.js)
+
+# set default load options
+
+```js
+import { loadModules, config } from 'esri-module-loader'
+
+config({
+  url: 'https://js.arcgis/com/4.8'
+})
+
+loadModules('Map').then(Map => {
+  // this is esri/Map from 4.8 api
+})
+
+loadModules('Map', {
+  url: url: 'https://js.arcgis/com/4.9' // this will override default loader options
+}).then(Map => {
+  // this is esri/Map from 4.9 api
+})
+```

@@ -1,6 +1,6 @@
 {
   "name": "esri-module-loader",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a helper to load esri modules",
   "main": "es5/index.js",
   "scripts": {
