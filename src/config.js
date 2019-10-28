@@ -1,5 +1,5 @@
 const CONFIG = {
-  defaultOptions: null
+  defaultOptions: undefined
 }
 
 export const config = defaultOptions => {
