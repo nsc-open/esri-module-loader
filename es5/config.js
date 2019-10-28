@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var CONFIG = {
-  defaultOptions: null
+  defaultOptions: undefined
 };
 
 var config = exports.config = function config(defaultOptions) {
